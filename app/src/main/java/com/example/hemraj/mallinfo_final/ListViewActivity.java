@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.PopupMenu;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -54,24 +57,48 @@ public class ListViewActivity extends AppCompatActivity {
         lv = (ListView) findViewById(R.id.list);
 
         new GetPOIs().execute();
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0){
-                    Intent newActivity = new Intent(ListViewActivity.this, NLIC_Shop_List.class);
-                    startActivity(newActivity);
+            public boolean onItemLongClick(AdapterView<?> adapter, View view, int pos, long rowId) {
+                if (pos == 0) {
+                    showFilterPopup(view);
                 }
-
-
-
+                return true;
             }
-
-
-
-
         });
 
 
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if (v.getId()==R.id.list_view) {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.popup_filter, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch(item.getItemId()) {
+            case R.id.menu_map:
+                // add stuff here
+                return true;
+
+            case R.id.menu_shop:
+                // add stuff here
+                return true;
+
+            case R.id.menu_directory:
+                // edit stuff here
+                return true;
+
+            default:
+                return super.onContextItemSelected(item);
+        }
     }
 
     /**
@@ -194,5 +221,36 @@ public class ListViewActivity extends AppCompatActivity {
         return (super.onOptionsItemSelected(menuItem));
     }
 
+    // Display anchored popup menu based on view selected
+    private void showFilterPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        // Inflate the menu from xml
+        popup.getMenuInflater().inflate(R.menu.popup_filter, popup.getMenu());
+        // Setup menu item selection
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.menu_map:
+                        Intent newActivity = new Intent(ListViewActivity.this, MainActivity.class);
+                        startActivity(newActivity);
+                        break;
 
+                    case R.id.menu_directory:
+                        Intent newActivity1 = new Intent(ListViewActivity.this, Directory.class);
+                        startActivity(newActivity1);
+                        break;
+
+                    case R.id.menu_shop:
+                        Intent newActivity2 = new Intent(ListViewActivity.this, NLIC_Shop_List.class);
+                        startActivity(newActivity2);
+                    default:
+                        return false;
+                }
+                return false;
+            }
+        });
+        // Handle dismissal with: popup.setOnDismissListener(...);
+        // Show the menu
+        popup.show();
+    }
 }

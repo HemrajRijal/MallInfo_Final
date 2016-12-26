@@ -5,10 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.PopupMenu;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -59,42 +56,17 @@ public class NLIC_Shop_List extends AppCompatActivity {
 
         new GetShop_NLIC().execute();
 
-        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapter, View view, int pos, long rowId) {
-                if (pos == 0) {
-                    showFilterPopup(view);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0){
+                    Intent newActivity = new Intent(NLIC_Shop_List.this, ProductList.class);
+                    startActivity(newActivity);
                 }
-              return true;
             }
         });
-
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        if (v.getId()==R.id.list_view) {
-            MenuInflater inflater = getMenuInflater();
-            inflater.inflate(R.menu.popup_filter, menu);
-        }
-    }
-
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        switch(item.getItemId()) {
-            case R.id.menu_details:
-                // add stuff here
-                return true;
-            case R.id.menu_directory:
-                // edit stuff here
-                return true;
-
-            default:
-                return super.onContextItemSelected(item);
-        }
-    }
 
     /**
      * Async task class to get json by making HTTP call
@@ -218,33 +190,5 @@ public class NLIC_Shop_List extends AppCompatActivity {
         return (super.onOptionsItemSelected(menuItem));
     }
 
-
-    // Display anchored popup menu based on view selected
-    private void showFilterPopup(View v) {
-        PopupMenu popup = new PopupMenu(this, v);
-        // Inflate the menu from xml
-        popup.getMenuInflater().inflate(R.menu.popup_filter, popup.getMenu());
-        // Setup menu item selection
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.menu_details:
-                        Intent newActivity = new Intent(NLIC_Shop_List.this, ProductList.class);
-                        startActivity(newActivity);
-                        break;
-
-                    case R.id.menu_directory:
-                        Intent newActivity1 = new Intent(NLIC_Shop_List.this, Directory.class);
-                        startActivity(newActivity1);
-                    default:
-                        return false;
-                }
-                return false;
-            }
-        });
-        // Handle dismissal with: popup.setOnDismissListener(...);
-        // Show the menu
-        popup.show();
-    }
 }
 

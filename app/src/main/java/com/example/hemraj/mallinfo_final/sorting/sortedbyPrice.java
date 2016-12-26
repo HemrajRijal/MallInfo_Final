@@ -1,11 +1,16 @@
 package com.example.hemraj.mallinfo_final.sorting;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.example.hemraj.mallinfo_final.NLIC_Shop_List;
 import com.example.hemraj.mallinfo_final.R;
 
 import org.json.JSONArray;
@@ -34,6 +39,8 @@ public class SortedbyPrice extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sortedbyprice);
 
+        //Back Navigation will be Displayed
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         unsortedlist = (ListView) findViewById(R.id.unsortedlist);
 
@@ -107,5 +114,35 @@ public class SortedbyPrice extends AppCompatActivity {
 
             productAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_sort, menu);
+        return true;
+    }
+
+    //Function to be called while pressing back navigation button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                Intent homeIntent = new Intent(this, ProductList.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+
+            case R.id.sort_brand:
+                Intent brandIntent = new Intent(this, SortedbyBrand.class);
+                brandIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(brandIntent);
+                return true;
+
+            case R.id.sort_price:
+                Intent priceIntent = new Intent(this, SortedbyPrice.class);
+                priceIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(priceIntent);
+        }
+        return (super.onOptionsItemSelected(menuItem));
     }
 }
