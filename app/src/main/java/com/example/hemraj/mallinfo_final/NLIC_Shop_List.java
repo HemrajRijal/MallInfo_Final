@@ -231,12 +231,15 @@ public class NLIC_Shop_List extends AppCompatActivity {
                     case R.id.menu_details:
                         Intent newActivity = new Intent(NLIC_Shop_List.this, ProductList.class);
                         startActivity(newActivity);
+                        break;
+
                     case R.id.menu_directory:
                         Intent newActivity1 = new Intent(NLIC_Shop_List.this, Directory.class);
                         startActivity(newActivity1);
                     default:
                         return false;
                 }
+                return false;
             }
         });
         // Handle dismissal with: popup.setOnDismissListener(...);

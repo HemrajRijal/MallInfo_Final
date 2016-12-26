@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.hemraj.mallinfo_v20.SamplePoiDetailActivity" >
+    tools:context="com.example.hemraj.mallinfo_final.SamplePoiDetailActivity" >
 
     <LinearLayout
         android:orientation="horizontal"

@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.example.hemraj.mallinfo_v20.util.HttpHandler;
+import com.example.hemraj.mallinfo_final.util.HttpHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,6 +23,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 /**
  * Created by Hemraj on 9/25/2016.

@@ -1,12 +1,14 @@
 package com.example.hemraj.mallinfo_final.sorting;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.example.hemraj.mallinfo_final.MainActivity;
+import com.example.hemraj.mallinfo_final.ListViewActivity;
 import com.example.hemraj.mallinfo_final.R;
 
 import org.json.JSONArray;
@@ -34,6 +36,8 @@ public class ProductList extends AppCompatActivity {
 
         unsortedlist = (ListView) findViewById(R.id.unsortedlist);
 
+        //Back Navigation will be Displayed
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences sp = getSharedPreferences("SHARED_PREF_NAME", Context.MODE_PRIVATE);
         String jsonString = sp.getString("jsonString", null);
@@ -66,5 +70,17 @@ public class ProductList extends AppCompatActivity {
         unsortedlist.setAdapter(productAdapter);
 
         productAdapter.notifyDataSetChanged();
+    }
+
+    //Function to be called while pressing back navigation button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                Intent homeIntent = new Intent(this, ListViewActivity.class);
+                homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(homeIntent);
+        }
+        return (super.onOptionsItemSelected(menuItem));
     }
 }
