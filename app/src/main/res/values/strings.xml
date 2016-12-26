@@ -1,3 +1,49 @@
 <resources>
-    <string name="app_name">MallInfo_Final</string>
+    <string name="app_name">MallInfo-2.0</string>
+    <string name="list_view_shop">List of Shop</string>
+    <string name="list_view_mall">List of Mall</string>
+    <string name="directory_of_mall">Directory of Mall</string>
+    <string name="spinner_title">Select Floor Plan</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="permissions_denied">Both location and camera permissions are required for the AR experience to work.</string>
+
+    <string name="compass_accuracy_low">Please re-calibrate compass by waving your device in a figure 8 motion.</string>
+    <string name="location_fetching">Trying to find out where you are</string>
+    <string name="device_unsupported">This device is not supported</string>
+    <string name="videosrawables_fallback">VideoDrawables are rendered fullscreen on this device</string>
+    <string name="urllauncher_menu_clear_history">Clear history</string>
+    <string name="urllauncher_button_launch"> Launch </string>
+    <string name="poi_detail_title">Place Details</string>
+    <string name="urllauncher_hint_textfield">http://</string>
+    <string name="urllauncher_default_value_textfield">http://</string>
+    <string name="poi_name">Name</string>
+    <string name="poi_description">Description</string>
+    <string name="poi_id">ID</string>
+
+    <string name="option_select">Select Floor Plan</string>
+
+
+
+    <!--Array for Image and dropdown option-->
+    <string-array name="object_array">
+        <item>Ground Floor</item>
+        <item>FLOOR 1</item>
+        <item>FLOOR 2</item>
+        <item>FLOOR 3</item>
+        <item>FLOOR 4</item>
+    </string-array>
+
+    <integer-array name="object_image">
+        <item>@drawable/ground_floor</item>
+        <item>@drawable/floor_1</item>
+        <item>@drawable/floor_2</item>
+        <item>@drawable/floor_3</item>
+        <item>@drawable/floor_4</item>
+    </integer-array>
+
+
+
 </resources>

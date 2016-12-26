@@ -49,11 +49,11 @@ public class UnsortedActivity extends AppCompatActivity {
             try {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String modelname = "Modelname:" + jsonObject.getString("modelname");
-                String size = "Size:" + jsonObject.getString("size");
-                String brand = "Brand:" + jsonObject.getString("brand");
-                String price = "Price:" + jsonObject.getString("price");
-                String type = "Type:" + jsonObject.getString("type");
+                String modelname = "ModelName:   " + jsonObject.getString("modelname");
+                String size = "Size:   " + jsonObject.getString("size");
+                String brand = "Brand:  " + jsonObject.getString("brand");
+                String price = "Price:  " + jsonObject.getString("price");
+                String type = "Type:  " + jsonObject.getString("type");
                 Product product = new Product(modelname, size, brand, price, type);
                 productList.add(product);
 
