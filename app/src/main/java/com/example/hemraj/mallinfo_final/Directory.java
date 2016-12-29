@@ -60,7 +60,7 @@ public class Directory extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case android.R.id.home:
-                Intent homeIntent = new Intent(this, NLIC_Shop_List.class);
+                Intent homeIntent = new Intent(this, ListViewActivity.class);
                 homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(homeIntent);
         }

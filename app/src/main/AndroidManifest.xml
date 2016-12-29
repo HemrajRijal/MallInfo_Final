@@ -93,6 +93,10 @@
             android:theme="@style/ListTheme"
             android:label="Product Sorted by Price"/>
 
+        <activity android:name=".sorting.UnsortedActivity"
+            android:theme="@style/ListTheme"
+            android:label="List of Product"/>
+
 
     </application>
 

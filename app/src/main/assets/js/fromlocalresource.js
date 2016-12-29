@@ -94,7 +94,7 @@ var World = {
     	// user clicked "More" button in POI-detail panel -> fire event to open native screen
         	onPoiDetailMoreButtonClicked: function onPoiDetailMoreButtonClickedFn() {
         		var currentMarker = World.currentMarker;
-        		var architectSdkUrl = "architectsdk://markerselected?id=" + encodeURIComponent(currentMarker.poiData.id) + "&title=" + encodeURIComponent(currentMarker.poiData.title) + "&description=" + encodeURIComponent(currentMarker.poiData.description);
+        		var architectSdkUrl = "http://citycentre.com.np/";
         		/*
         			The urlListener of the native project intercepts this call and parses the arguments.
         			This is the only way to pass information from JavaSCript to your native code.
@@ -256,13 +256,13 @@ var World = {
             	// reload places from content source
             	reloadPlaces: function reloadPlacesFn() {
                 		if (!World.isRequestingData) {
-                			if (World.userLocation) {
+                			if (!World.userLocation) {
                 				World.requestDataFromLocal(World.userLocation.latitude, World.userLocation.longitude);
                 			} else {
                 				World.updateStatusMessage('Unknown user-location.', true);
                 			}
                 		} else {
-                			World.updateStatusMessage('Already requesing places...', true);
+                			World.updateStatusMessage('Already requesting places...', true);
                 		}
                 	},
 

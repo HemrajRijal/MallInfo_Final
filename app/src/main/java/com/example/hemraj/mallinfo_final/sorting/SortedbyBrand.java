@@ -10,7 +10,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.example.hemraj.mallinfo_final.NLIC_Shop_List;
 import com.example.hemraj.mallinfo_final.R;
 
 import org.json.JSONArray;
@@ -134,6 +133,7 @@ public class SortedbyBrand extends AppCompatActivity {
                 Intent homeIntent = new Intent(this, ProductList.class);
                 homeIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(homeIntent);
+                break;
 
             case R.id.sort_brand:
                 Intent brandIntent = new Intent(this, SortedbyBrand.class);
