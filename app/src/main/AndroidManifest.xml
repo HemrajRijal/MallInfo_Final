@@ -98,6 +98,17 @@
             android:label="List of Product"/>
 
 
+        <activity android:name=".MapActivity"
+            android:theme="@style/ListTheme"
+            android:label="List of Product"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCs04fFm3NRk9ef7CrjlbGuSJJ5NRgEqEU"/>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
     </application>
 
 </manifest>

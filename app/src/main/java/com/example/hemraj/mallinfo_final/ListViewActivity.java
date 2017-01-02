@@ -231,7 +231,7 @@ public class ListViewActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.menu_map:
-                        Intent newActivity = new Intent(ListViewActivity.this, MainActivity.class);
+                        Intent newActivity = new Intent(ListViewActivity.this, MapActivity.class);
                         startActivity(newActivity);
                         break;
 
